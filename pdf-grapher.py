@@ -25,6 +25,7 @@
 	#0.6	updated graph legend with concise explanations
 	#0.6    added -n arg to disable generation of obj log folders
 	#0.7	added initial support for detecting embedded files
+	#0.8	added GPL info to help screen
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -45,7 +46,7 @@
 import pydot, os, sys, shutil, argparse, subprocess, string
 
 #awesome argparse tute https://docs.python.org/2/howto/argparse.html
-parser = argparse.ArgumentParser(usage='pdf-grapher, graphs objects and references from .pdf files.\n\nGraph Legend:\nRed = Contains or references JavaScript\nYellow = Contains Stream\nWhite = Referenced Obj not found\nGreen = No JS or stream detected\n')
+parser = argparse.ArgumentParser(usage='pdf-grapher, graphs objects and references from .pdf files.\n\nGraph Legend:\nRed = Contains or references JavaScript\nYellow = Contains Stream\nWhite = Referenced Obj not found\nGreen = No JS or stream detected\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
 parser.add_argument('file', help='pdf to graph')
 parser.add_argument('-o',type=str, help="graph output file format (default: svg)", choices=['dot', 'png', 'vrml'])
 parser.add_argument('-n', help='no obj log files or directories created', action='store_true')
