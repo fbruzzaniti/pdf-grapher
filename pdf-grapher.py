@@ -14,19 +14,8 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# History
-	#0.5	SVG is default format, added ability to click on obj and see extracted object
-	#0.6	changed log dir to file_log 
-	#0.6	used hex notation to correct colour in SVG
-	#0.6    added VRML so I now I have a work reason to buy the Occulus Rift 				
-	#0.6	added command line options for png, vrml and dot
-	#0.6	fixed a bug that prevented obj type from displaying correctly
-	#0.6	added check for pdf-parser.py and error w/ help if not found
-	#0.6	updated graph legend with concise explanations
-	#0.6    added -n arg to disable generation of obj log folders
-	#0.7	added initial support for detecting embedded files
-	#0.8	added GPL info to help screen
-  #0.9  accidentally left in references to sys.argv[0], using args.file instead  
+# History  
+  #0.5 rev7 alligning version numbers with repo
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -34,14 +23,15 @@
     #pip install -Iv https://pypi.python.org/packages/source/p/pyparsing/pyparsing-1.5.7.tar.gz#md5=9be0fcdcc595199c646ab317c1d9a709
     #pip install pydot
 
-#TODO: Test with objects that have revisions.
-#TODO: Cache getObjType lookups in a list do pdf-parser is not called again later to resolve ref's
-#TODO: Tidy up code
-#TODO: Create html template for obj's in log dir
-#TODO: Test on windows
-#TODO: Add stream extraction
-#TODO: Add embedded file extraction
-#TODO: squash popen err printing on console E.e. pdf-parser errors (non-fatal) with some embedded files
+# TODO:
+  #Test with objects that have revisions.
+  #Cache getObjType lookups in a list do pdf-parser is not called again later to resolve ref's
+  #Tidy up code
+  #Create html template for obj's in log dir
+  #Test on windows
+  #Add stream extraction
+  #Add embedded file extraction
+  #squash popen err printing on console E.e. pdf-parser errors (non-fatal) with some embedded files
 
 
 import pydot, os, sys, shutil, argparse, subprocess, string
