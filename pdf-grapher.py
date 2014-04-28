@@ -26,6 +26,7 @@
 	#0.6    added -n arg to disable generation of obj log folders
 	#0.7	added initial support for detecting embedded files
 	#0.8	added GPL info to help screen
+  #0.9  accidentally left in references to sys.argv[0], using args.file instead  
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -54,7 +55,7 @@ args = parser.parse_args()
 
 if not args.n:
 
-	log_path = "./" + sys.argv[1] + "_log/" #set log path for extracted elements
+	log_path = "./" + args.file + "_log/" #set log path for extracted elements
 
 	if os.path.exists(log_path): #check if log dir already exsists, if so delete it
 		shutil.rmtree(log_path)
@@ -73,11 +74,11 @@ def toAscii(s): #filter out nom-printables caused by embedded files
 
 def getObjType(objNum): 
 
-	p = subprocess.Popen(["python", "pdf-parser.py",sys.argv[1],"-o",str(objNum.split()[0])], stdout=subprocess.PIPE) #Only uses major not revision number
+	p = subprocess.Popen(["python", "pdf-parser.py",args.file,"-o",str(objNum.split()[0])], stdout=subprocess.PIPE) #Only uses major not revision number
 	
 	if not args.n:
-		f = open(log_path + "obj/" + sys.argv[1] + '.obj' + str(objNum.split()[0]),'w') #save extracted obj to file in log directory
-		f.writelines(os.popen("python pdf-parser.py " + sys.argv[1] + " -o " + str(objNum.split()[0])))
+		f = open(log_path + "obj/" + args.file + '.obj' + str(objNum.split()[0]),'w') #save extracted obj to file in log directory
+		f.writelines(os.popen("python pdf-parser.py " + args.file + " -o " + str(objNum.split()[0])))
 		f.close()	
 
 	for line in iter(p.stdout.readline,''):
@@ -85,9 +86,9 @@ def getObjType(objNum):
 		if "Type:" in line:
 			if len(line.split()) > 1: 
 				return str(line.split()[1]) #return obj type. E.g. /Page
-		
 
-for line in os.popen("python pdf-parser.py " + sys.argv[1]): #I could just read the pdf as text, but pdf-parser outputs it's own parsed results so they might be saner
+		
+for line in os.popen("python pdf-parser.py " + args.file): #I could just read the pdf as text, but pdf-parser outputs it's own parsed results so they might be saner
 	line = toAscii(line)
 	if len(line.split()) == 3 and line.split()[0] == "obj": #Look for an object and if found set the obj variable to it's value I.e. "<obj> <rev>"
 		obj = str(line).replace("obj","").strip() #get object
@@ -95,7 +96,7 @@ for line in os.popen("python pdf-parser.py " + sys.argv[1]): #I could just read 
 		obj = obj + " (" + str(objType) + ")" #combine obj and type into var obj
 
 		if not args.n:
-			objUrl = '"' + log_path + "obj/" + sys.argv[1] + '.obj' + obj.split()[0] + '"' #set local URL for extracted obj's
+			objUrl = '"' + log_path + "obj/" + args.file + '.obj' + obj.split()[0] + '"' #set local URL for extracted obj's
 		else:
 			objUrl = ''
 
@@ -118,16 +119,16 @@ for line in os.popen("python pdf-parser.py " + sys.argv[1]): #I could just read 
 # Create graph, format selected by user
 
 if args.o == 'dot':	
-	graph.write_dot(os.path.splitext(sys.argv[1])[0] + ".dot")
+	graph.write_dot(os.path.splitext(args.file)[0] + ".dot")
 
 if args.o == 'png':
-	graph.write_png(os.path.splitext(sys.argv[1])[0] + ".png")
+	graph.write_png(os.path.splitext(args.file)[0] + ".png")
 
 if args.o == 'vrml':
-	graph.write_vrml(os.path.splitext(sys.argv[1])[0] + ".vrml")
+	graph.write_vrml(os.path.splitext(args.file)[0] + ".vrml")
 
 if not args.o:
-	graph.write_svg(os.path.splitext(sys.argv[1])[0] + ".svg")
+	graph.write_svg(os.path.splitext(args.file)[0] + ".svg")
 
 
 
