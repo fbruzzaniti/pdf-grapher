@@ -16,6 +16,7 @@
 
 # History  
   #0.5 rev7 alligning version numbers with repo
+  #0.5 rev8 added other indicators from PDFiD split between redNodeList[] (commmonly in malware) and yellowNodeList[] (suspicious)
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -30,11 +31,14 @@
   #Create html template for obj's in log dir
   #Test on windows
   #Add stream extraction
-  #Add embedded file extraction
   #squash popen err printing on console E.e. pdf-parser errors (non-fatal) with some embedded files
+  #Automated analysis of node relationships/patterns E.g. /AA -> /JS is more suspicious than just /JS or /AA	
 
 
 import pydot, os, sys, shutil, argparse, subprocess, string
+
+redNodeList = ['/Encrypt','/AA','/OpenAction','/RichMedia','/Launch','/JS','/JavaScript'] #commonly found in malware
+yellowNodeList = ['Contains stream','/JBIG2Decode','/ObjStm','/XFA'] #suspicious
 
 #awesome argparse tute https://docs.python.org/2/howto/argparse.html
 parser = argparse.ArgumentParser(usage='pdf-grapher, graphs objects and references from .pdf files.\n\nGraph Legend:\nRed = Contains or references JavaScript\nYellow = Contains Stream\nWhite = Referenced Obj not found\nGreen = No JS or stream detected\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
@@ -57,7 +61,7 @@ if not os.path.isfile('pdf-parser.py'):
 	print 'pdf-grapher requires pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools\n'
 	sys.exit()
 
-graph = pydot.Dot(graph_type='digraph') #set graph type
+
 
 def toAscii(s): #filter out nom-printables caused by embedded files
 	return filter(lambda x: x in string.printable, s)
@@ -77,6 +81,8 @@ def getObjType(objNum):
 			if len(line.split()) > 1: 
 				return str(line.split()[1]) #return obj type. E.g. /Page
 
+
+graph = pydot.Dot(graph_type='digraph') #set graph type
 		
 for line in os.popen("python pdf-parser.py " + args.file): #I could just read the pdf as text, but pdf-parser outputs it's own parsed results so they might be saner
 	line = toAscii(line)
@@ -92,11 +98,13 @@ for line in os.popen("python pdf-parser.py " + args.file): #I could just read th
 
 		graph.add_node(pydot.Node("Obj " + obj, style="filled", fillcolor="#00ff00", URL=(objUrl))) #add noded named "Obj <obj> <rev>				
 	
-	if " /JS " in line or " /JavaScript " in line: #look for javascript tags if so colour the node red
-		graph.add_node(pydot.Node("Obj " + obj, style="filled", fillcolor="red", URL=(objUrl))) #pdf-parse should take care of octal and hex obfuscation
-
-	if "Contains stream" in line: #Look for stream tag if so colour the node yellow
-		graph.add_node(pydot.Node("Obj " + obj, style="filled", fillcolor="yellow", URL=(objUrl)))
+	for item in redNodeList:
+		if item in line: #look for javascript tags if so colour the node red
+			graph.add_node(pydot.Node("Obj " + obj, style="filled", fillcolor="red", URL=(objUrl))) #pdf-parse should take care of octal and hex obfuscation
+	
+	for item in yellowNodeList:
+		if item in line: #Look for stream tag if so colour the node yellow
+			graph.add_node(pydot.Node("Obj " + obj, style="filled", fillcolor="yellow", URL=(objUrl)))
 	
 
 	if len(line.split()) > 1 and line.split()[0] == "Referencing:": #Only print obj's that have ref's I.E. > 1
@@ -119,12 +127,4 @@ if args.o == 'vrml':
 
 if not args.o:
 	graph.write_svg(os.path.splitext(args.file)[0] + ".svg")
-
-
-
-
-		
-		
-		
-
 
