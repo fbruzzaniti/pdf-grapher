@@ -19,7 +19,8 @@
   #0.5 rev8 added other indicators from PDFiD split between redNodeList[] (commmonly in malware) and yellowNodeList[] (suspicious)
   #0.5 rev9 added detection of non printable text in objects
   #0.5 rev9 added /EmbeddedFile to redNodeList[]
-  #0.5 rev9 squashed pdf-parser errors when encountering files embeded with non-printable characters			
+  #0.5 rev9 squashed pdf-parser errors when encountering files embeded with non-printable characters
+  #0.5 rev10 fixed a bug where Type: of node was not displaying because of changes I had made in Rev9				
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -72,16 +73,14 @@ def isPrintable(s): #test if all characters are printable (they all should be in
 	return all(c in string.printable for c in s)
 
 def getObjType(objNum): 
-
-	p = subprocess.Popen(["python", "pdf-parser.py",args.file,"-o",str(objNum.split()[0])], stdout=subprocess.PIPE,stderr=subprocess.PIPE) #Only uses major not revision number
-	
+	p2 = subprocess.Popen(["python", "pdf-parser.py",args.file,"-o",str(objNum.split()[0])], stdout=subprocess.PIPE,stderr=subprocess.PIPE) #Only uses major not revision number
 	if not args.n:
 		f = open(log_path + "obj/" + args.file + '.obj' + str(objNum.split()[0]),'w') #save extracted obj to file in log directory
-		p = subprocess.Popen(["python", "pdf-parser.py",args.file,"-o",str(objNum.split()[0])], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-		f.writelines(iter(p.stdout.readline,''))
+		p3 = subprocess.Popen(["python", "pdf-parser.py",args.file,"-o",str(objNum.split()[0])], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+		f.writelines(iter(p3.stdout.readline,''))
 		f.close()	
 
-	for line in iter(p.stdout.readline,''):
+	for line in iter(p2.stdout.readline,''):
 		line = toAscii(line.rstrip()) 
 		if "Type:" in line:
 			if len(line.split()) > 1: 
@@ -90,8 +89,8 @@ def getObjType(objNum):
 
 graph = pydot.Dot(graph_type='digraph') #set graph type
 		
-p = subprocess.Popen(["python", "pdf-parser.py",args.file],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-for line in iter(p.stdout.readline,''):
+p1 = subprocess.Popen(["python", "pdf-parser.py",args.file],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+for line in iter(p1.stdout.readline,''):
 	#line = toAscii(line) #throw this back in if we start getting errors handling binary
 	if len(line.split()) == 3 and line.split()[0] == "obj": #Look for an object and if found set the obj variable to it's value I.e. "<obj> <rev>"
 		obj = str(line).replace("obj","").strip() #get object
@@ -135,4 +134,13 @@ if args.o == 'vrml':
 
 if not args.o:
 	graph.write_svg(os.path.splitext(args.file)[0] + ".svg")
+
+
+
+
+		
+		
+		
+
+
 
