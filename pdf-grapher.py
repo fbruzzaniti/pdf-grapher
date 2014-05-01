@@ -20,7 +20,8 @@
   #0.5 rev9 added detection of non printable text in objects
   #0.5 rev9 added /EmbeddedFile to redNodeList[]
   #0.5 rev9 squashed pdf-parser errors when encountering files embeded with non-printable characters
-  #0.5 rev10 fixed a bug where Type: of node was not displaying because of changes I had made in Rev9				
+  #0.5 rev10 fixed a bug where Type: of node was not displaying because of changes I had made in Rev9
+  #0.6 rev11 updated help text					
 
 # BUGS:
   #If you get the error "Couldn't import dot_parser, loading of dot files will not be possible." try this:
@@ -44,7 +45,8 @@ redNodeList = ['/Encrypt','/AA','/OpenAction','/RichMedia','/Launch','/JS','/Jav
 yellowNodeList = ['Contains stream','/JBIG2Decode','/ObjStm','/XFA'] #suspicious
 
 #awesome argparse tute https://docs.python.org/2/howto/argparse.html
-parser = argparse.ArgumentParser(usage='pdf-grapher, graphs objects and references from .pdf files.\n\nGraph Legend:\nRed = Contains or references JavaScript\nYellow = Contains Stream\nWhite = Referenced Obj not found\nGreen = No JS or stream detected\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
+parser = argparse.ArgumentParser(usage='pdf-grapher, graphs objects and references from .pdf files.\n\nGraph Legend:\nRed = Contains or references common malware elements\nYellow = Contains or references possible malware elements\nWhite = Referenced Obj not found\nGreen = No malware elements found\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
+
 parser.add_argument('file', help='pdf to graph')
 parser.add_argument('-o',type=str, help="graph output file format (default: svg)", choices=['dot', 'png', 'vrml'])
 parser.add_argument('-n', help='no obj log files or directories created', action='store_true')
@@ -134,13 +136,4 @@ if args.o == 'vrml':
 
 if not args.o:
 	graph.write_svg(os.path.splitext(args.file)[0] + ".svg")
-
-
-
-
-		
-		
-		
-
-
 
