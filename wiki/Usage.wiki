@@ -34,10 +34,12 @@ optional arguments:
 
      ||_*VRML:*_ Virtual Reality Modling Language. Ok I put this in here as a bit of a joke but it kind of works. With the advent of low cost VR equipment like the Occulus Rift coming out, I'll probably be experimenting to see if 3D visualisation could be useful in this case.||
 
-  * _*-n*_: This argument prevents the <file>_logs directories from being created. This allows faster processing speed but nodes will not be able to display the contents of objects when clicked on.
+  * _*-n*_: By default pdf-grapher.py will create a file_pdf_logs directory for every file processed by pdf-grapher.py.  These logs contain the objs dumped by pdf-parser.py and displayed when you click on a graph node.  If -n is invoked on the commandline then no directories will be created (I.e. Nodes will not display obj content when clicked on). This should also improve the processing speed of pdf-grapher.py||
 
-==<file>_logs Directories==
 
 ==Dealing Conplex Graphs==
 
+
 ==High Volume Processing==
+
+==Other Tips==
