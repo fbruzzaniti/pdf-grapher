@@ -24,8 +24,9 @@
   #0.6a rev11 Removed external calls to pdf-parser except for one, handling objs in memory to recify performance issues with large or insane PDFs
   #0.6a rev13 Added filter option for objects (invokes pdf-parser -f)
   #0.6a rev13 Renamed log dirs <filename>_logs	
-  #0.7  rev14 Started work on HTML templates
-  #0.7  rev14 Finished testing alpha features getObjType() and dmpObj  
+  #0.7 rev14 Started work on HTML templates
+  #0.7 rev14 Finished testing alpha features getObjType() and dmpObj
+  #0.7 rev15 Updated pdf-grapher.py -h text   
 
  				
 
@@ -51,7 +52,7 @@ redNodeList = ['/Encrypt','/AA','/OpenAction','/RichMedia','/Launch','/JS','/Jav
 yellowNodeList = ['Contains stream','/JBIG2Decode','/ObjStm','/XFA'] #suspicious
 
 #awesome argparse tute https://docs.python.org/2/howto/argparse.html
-parser = argparse.ArgumentParser(usage='Graphs PDF objects and references for malware analysis.\npdf-parser.py -h for help\n\nGraph Legend:\nRed = Contains or references common malware elements\nYellow = Contains or references possible malware elements\nWhite = Referenced Obj not found\nGreen = No malware elements found\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
+parser = argparse.ArgumentParser(usage='Graphs PDF objects and references for malware analysis.\npdf-parser.py -h for help\n\nWritten by Frank Bruzzaniti <frank.bruzzaniti@gmail.com>, no Copyright.\nThis program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License.\nUse at your own risk.\n')
 
 parser.add_argument('file', help='pdf to graph')
 parser.add_argument('-f', help='pass stream object through filter (FlateDecode,\nASCIIHexDecode, ASCII85Decode, LZWDecode', action='store_true')
@@ -182,4 +183,3 @@ if args.o == 'vrml':
 
 if not args.o:
 	graph.write_svg(os.path.splitext(args.file)[0] + ".svg")
-
