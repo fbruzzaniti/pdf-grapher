@@ -56,6 +56,6 @@ If your dealing with large volume's of PDF's then you may want to consider the f
 
   *_*-n*_ will give you *FASTER* performance on slower HDD's but will give a you negligible performance boot on an SSD drive.
 
-  *_*-f*_ will *SLOW* down your performance by ~10x, this should be avoided if your performance is a concern.
+  *_*-f*_ will *SLOW*  performance by ~10x, this should be avoided if performance is a concern.
 
   *_*-o png*_ will *SLOW* processing performance by ~%30. 
