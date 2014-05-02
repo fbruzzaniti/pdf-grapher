@@ -34,9 +34,9 @@ optional arguments:
 
      ||_*VRML:*_ Virtual Reality Modling Language. Ok I put this in here as a bit of a joke but it kind of works. With the advent of low cost VR equipment like the Occulus Rift coming out, I'll probably be experimenting to see if 3D visualisation could be useful in this case.||
 
-  * _*-n*_: This argument  
+  * _*-n*_: This argument prevents the <file>_logs directories from being created. This allows faster processing speed but nodes will not be able to display the contents of objects when clicked on.
 
-==Command Line Arguments==
+==<file>_logs Directories==
 
 ==Dealing Conplex Graphs==
 
