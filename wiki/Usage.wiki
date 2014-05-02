@@ -1,7 +1,6 @@
 = Usage =
-<br/>
 
-*pdf-parser.py -h*
+==pdf-parser.py -h==
 
 {{{
 usage: Graphs PDF objects and references for malware analysis.
@@ -20,11 +19,16 @@ optional arguments:
   -n                 no obj log files or directories created
 
 }}}
-<br/>
 
-*Arguments*
+==Command Line Arguments==
 
-  * _-h_: Displays help.
-  * _-f_: Passes PDF objects through filters, this 
-  * _-o_:  
-  * _-h_: 
+  * _*-h*_: Displays help.
+  * _*-f*_: Passes PDF objects through filters, this 
+  * _*-o*_:  
+  * _*-n*_: 
+
+==Command Line Arguments==
+
+==Dealing Conplex Graphs==
+
+==High Volume Processing==
