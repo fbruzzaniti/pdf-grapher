@@ -22,9 +22,16 @@ optional arguments:
 
 ==Command Line Arguments==
 
-  * _*-h*_: Displays help.
-  * _*-f*_: Passes PDF objects through filters, this 
-  * _*-o*_:  
+  * _*-h*_: Displays help.<br><br>
+  * _*-f*_: Passes PDF objects through FlateDecode,ASCIIHexDecode, ASCII85Decode, LZWDecode filters, this will slow down the processing speed of the script but the objects may yield more information with their content un-filtered. -f is the equivalent of pdf-parser -f.<br><br>
+  * _*-o*_: Species the output format of the graph. If -o is not specified then the svg format will be used.<br><br>
+
+      DOT: Graph description language format, useful to use with tools that specialize in viewing or processing graphs. Some DOT viewers will allow zoom, pan and restructuring of nodes. The dot format supports html linking of nodes allowing pdf-grapher to display obj information on click.
+
+      PNG: A bitmap image format, viewers only offer a static image that degrades when zoomed and allows no interaction to restructure nodes to activate html links. PNG is widely supported by many applications and is useful if you need to insert a graph into a document or webpage.   
+
+      SVG:  
+
   * _*-n*_: 
 
 ==Command Line Arguments==
