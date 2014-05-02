@@ -58,4 +58,4 @@ If your dealing with large volume's of PDF's then you may want to consider the f
 
   *_*-f*_ will *SLOW* down your performance by ~10x, this should be avoided if your performance is a concern.
 
-  *_*-o png*_will *SLOW* processing performance by ~%30. 
+  *_*-o png*_ will *SLOW* processing performance by ~%30. 
