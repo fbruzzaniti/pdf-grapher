@@ -48,14 +48,14 @@ pdf-parser (http://blog.didierstevens.com/programs/pdf-tools/)
 ----
 ==Dealing Complex Graphs==
 
-If your dealing with small-med graphs then using your browser to view SVG files should be fine.  For more complex graphs I'd suggest using a more specialized viewer like ZGRViewer (  http://zvtm.sourceforge.net/zgrviewer.html)
+If your dealing with small-med graphs then using your browser to view SVG files should be fine.  For more complex graphs I'd suggest using a more specialized viewer like *ZGRViewer* (  http://zvtm.sourceforge.net/zgrviewer.html)
 ----
 ==High Volume Processing==
 
 If your dealing with large volume's of PDF's then you may want to consider the following options:
 
-  *-n* will give you FASTER performance on slower HDD's but will give a you negligible performance boot on an SSD drive.
+  *_*-n*_ will give you *FASTER* performance on slower HDD's but will give a you negligible performance boot on an SSD drive.
 
-  *-f* will SLOW down your performance by up to 10x, this should be avoided if your performance is a concern.
+  *_*-f*_ will *SLOW* down your performance by ~10x, this should be avoided if your performance is a concern.
 
-  *-o* png will SLOW processing by up to %30. DOT,SVG and VRML graphs all output at around the same speed. 
+  *_*-o*_ png will *SLOW* processing by ~%30. DOT,SVG and VRML graphs all output at around the same speed. 
