@@ -1,5 +1,3 @@
-#Installation
-
 = Installation =
 
 Download pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools/
