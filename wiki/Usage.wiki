@@ -54,7 +54,7 @@ If your dealing with small-med graphs then using your browser to view SVG files 
 
 If your dealing with large volume's of PDF's then you may want to consider the following options:
 
-  *_*-n*_ will give you *FASTER* performance on slower HDD's but will give a you negligible performance boost on SSD drives (according to my testing).
+  *_*-n*_ will give you *FASTER* performance on slower HDD's but will give a you negligible performance boost on SSD drives.
 
   *_*-f*_ will *SLOW*  performance by ~10x, this should be avoided if performance is a concern.
 
