@@ -1,0 +1,30 @@
+= Usage =
+<br/>
+
+*pdf-parser.py -h*
+
+{{{
+usage: Graphs PDF objects and references for malware analysis.
+pdf-parser.py -h for help
+
+...
+
+positional arguments:
+  file               pdf to graph
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -f                 pass stream object through filter (FlateDecode,
+                     ASCIIHexDecode, ASCII85Decode, LZWDecode
+  -o {dot,png,vrml}  graph output file format (default: svg)
+  -n                 no obj log files or directories created
+
+}}}
+<br/>
+
+*Arguments*
+
+  * _-h_: Displays help.
+  * _-f_: Passes PDF objects through filters, this 
+  * _-o_:  
+  * _-h_: 
