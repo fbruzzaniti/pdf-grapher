@@ -26,7 +26,8 @@
   #0.6a rev13 Renamed log dirs <filename>_logs	
   #0.7 rev14 Started work on HTML templates
   #0.7 rev14 Finished testing alpha features getObjType() and dmpObj
-  #0.7 rev15 Updated pdf-grapher.py -h text   
+  #0.7 rev15 Updated pdf-grapher.py -h text  
+  #0.7 rev16 Fixed bug where ZGRViewer required full not relative path to view dump'd obj 
 
  				
 
@@ -62,8 +63,8 @@ args = parser.parse_args()
 
 if not args.n:
 
-	logPath = "./" + args.file + "_logs/" #set log path for extracted elements
-
+	logPath = os.getcwd() + "/" + args.file + "_logs/" #set log path for extracted elements
+	
 	if os.path.exists(logPath): #check if log dir already exsists, if so delete it
 		shutil.rmtree(logPath)
 
@@ -137,6 +138,7 @@ for line in pdfParserOut:
 		obj = obj + " (" + str(objType) + ")" #combine obj and type into var obj
 
 		if not args.n:
+			
 			objUrl = '"' + logPath + "obj/" + args.file + '.obj' + obj.split()[0] + '"' #set local URL for extracted obj's
 		else:
 			objUrl = ''
