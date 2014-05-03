@@ -48,7 +48,9 @@ pdf-parser (http://blog.didierstevens.com/programs/pdf-tools/)
 ----
 ==Complex Graphs==
 
-If your dealing with small-med graphs then using your browser to view SVG files should be fine.  For more complex graphs I'd suggest using a more specialized viewer like *ZGRViewer* (  http://zvtm.sourceforge.net/zgrviewer.html)
+If your dealing with small-med graphs then using your browser to view SVG files should be fine.  For more complex graphs I'd suggest using a more specialized viewer like *ZGRViewer* (  http://zvtm.sourceforge.net/zgrviewer.html). 
+
+*HINT:* Press spacebar when using ZGRViewer to view obj dump.
 ----
 ==High Volume Processing==
 
