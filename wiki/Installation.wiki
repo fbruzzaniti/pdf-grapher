@@ -1,5 +1,7 @@
 = Installation =
 
+Note: I've only tested pdf-grapher on Linux
+
 Requires graphvis (http://www.graphviz.org/) or apt-get install graphvis
 
 Download pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools/
