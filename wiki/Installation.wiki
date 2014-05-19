@@ -1,5 +1,7 @@
 = Installation =
 
+Requires graphvis (http://www.graphviz.org/) or apt-get install graphvis
+
 Download pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools/
 
 Extract pdf-parser.py into the same path as pdf-grapher.py.
