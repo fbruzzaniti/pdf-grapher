@@ -1,6 +1,6 @@
 = Installation =
 
-Note: I've only tested pdf-grapher on Linux
+_Note: I've only tested pdf-grapher on Linux_
 
 Requires graphvis (http://www.graphviz.org/) or apt-get install graphvis
 
