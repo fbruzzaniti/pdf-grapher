@@ -158,7 +158,7 @@ for line in pdfParserOut:
 		for item in line.split(","):
 			ref = item.replace("Referencing:","").replace("R","").strip() #get ref obj
 			ref = ref + " (" + str(getObjType(ref)) + ")" #Combine re and ref type into var ref
-			graph.add_edge(pydot.Edge("Obj " + toAscii(obj), "Obj " + toAscii(ref), label="")) #add edges
+			graph.add_edge(pydot.Edge("Obj " + toAscii(obj), "Obj " + toAscii(ref))) #add edges
 
 
 # Create graph, format selected by user
