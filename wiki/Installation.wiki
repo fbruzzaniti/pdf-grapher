@@ -5,7 +5,7 @@ _Note: I've only tested pdf-grapher on Linux_
 Requires graphvis (http://www.graphviz.org/):
 apt-get install graphviz
 
-Download pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools/
+Download pdf-parser.py from http://blog.didierstevens.com/programs/pdf-tools
 Extract pdf-parser.py into the same path as pdf-grapher.py.
 
 Install pydot (https://code.google.com/p/pydot/) 
