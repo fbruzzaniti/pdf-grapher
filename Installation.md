@@ -1,0 +1,26 @@
+# Installation #
+
+_Note: I've only tested pdf-grapher on Linux_
+
+Requires graphvis (http://www.graphviz.org/):
+apt-get install graphviz
+
+Download and extract pdf-parser.py to working dir (http://blog.didierstevens.com/programs/pdf-tools):
+
+Install pydot (https://code.google.com/p/pydot/)
+apt-get install python-pydot
+
+Done!
+
+## Bug: "Couldn't import dot\_parser, loading of dot files will not be possible." ##
+If you run pdf-grapher.py and receive the following error: "Couldn't import dot\_parser, loading of dot files will not be possible."
+
+According to this post http://stackoverflow.com/questions/15951748/pydot-and-graphviz-error-couldnt-import-dot-parser-loading-of-dot-files-will it's due to the changes between pyparsing 1.x and 2.x
+
+This fix worked for me:
+
+> sudo pip uninstall pyparsing
+
+> sudo pip install -Iv https://pypi.python.org/packages/source/p/pyparsing/pyparsing-1.5.7.tar.gz#md5=9be0fcdcc595199c646ab317c1d9a709
+
+> sudo pip install pydot
