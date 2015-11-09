@@ -6,15 +6,12 @@ https://raw.githubusercontent.com/fbruzzaniti/pdf-grapher/wiki/test-js.png
 Complex Example, viewing a graph produced by pdf-grapher using ZRGViewer:
 https://raw.githubusercontent.com/fbruzzaniti/pdf-grapher/wiki/zgrviewer.png
 
-Install Instructions:
-
+Install Instructions:               
 https://github.com/fbruzzaniti/pdf-grapher/blob/wiki/Installation.md
 
-Usage Instructions:
-
+Usage Instructions:             
 https://github.com/fbruzzaniti/pdf-grapher/blob/wiki/Usage.md
 
-Graph Colour Refrence:
-
+Graph Colour Refrence:             
 https://github.com/fbruzzaniti/pdf-grapher/blob/wiki/GraphReference.md
 
